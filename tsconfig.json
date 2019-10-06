@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true
+  },
+  "include": [
+    "src/bean/**/*",
+    "src/service/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>12</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>408</x>
+      <y>264</y>
+      <w>240</w>
+      <h>204</h>
+    </coordinates>
+    <panel_attributes>SimpleClass
+--
+-name:String 
+-code:String
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1572</x>
+      <y>228</y>
+      <w>192</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>template=0: Object
+TemplateClass
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>804</x>
+      <y>252</y>
+      <w>192</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>StockFetcher
+--
+-stocks:Stock[]
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
