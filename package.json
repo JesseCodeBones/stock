@@ -1,0 +1,21 @@
+{
+  "name": "stock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-start": "tsc && node ./src/server/bin/www",
+    "start": "node ./src/server/bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JesseCodeBones/stock.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JesseCodeBones/stock/issues"
+  },
+  "homepage": "https://github.com/JesseCodeBones/stock#readme"
+}
