@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-start": "tsc && node ./src/server/bin/www",
-    "start": "node ./src/server/bin/www"
+    "dev-start": "tsc && node --experimental-modules ./src/server/bin/www",
+    "start": "node --experimental-modules ./src/server/bin/www"
   },
   "repository": {
     "type": "git",
@@ -17,5 +17,13 @@
   "bugs": {
     "url": "https://github.com/JesseCodeBones/stock/issues"
   },
-  "homepage": "https://github.com/JesseCodeBones/stock#readme"
+  "homepage": "https://github.com/JesseCodeBones/stock#readme",
+  "devDependencies": {
+    "@types/node": "^12.7.11",
+    "bufferhelper": "^0.2.1",
+    "iconv-lite": "^0.4.24",
+    "jsonfile": "latest",
+    "http-errors": "latest",
+    "typescript": "^3.6.3"
+  }
 }
