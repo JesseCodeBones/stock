@@ -1,2 +1,8 @@
 
 node_modules
+/public/javascripts/IViewUpdater.js
+/public/javascripts/IViewUpdater.js.map
+/public/javascripts/view_index.js
+/public/javascripts/view_index.js.map
+/public/javascripts/view_index_tasks.js
+/public/javascripts/view_index_tasks.js.map

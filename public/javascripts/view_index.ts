@@ -1,5 +1,6 @@
 import {View_index_tasks} from "./view_index_tasks.js"
 import {IViewUpdater} from "./IViewUpdater.js";
+let $: JQueryStatic = (window as any)["jQuery"];
 export class View_index implements IViewUpdater{
     getJobs():View_index_tasks[]{
         return[
@@ -7,11 +8,21 @@ export class View_index implements IViewUpdater{
         ];
     }
 
-    updateUI() {
+    _updateJobs(){
         let jobs = this.getJobs();
         for (let job of jobs){
-            console.log("get UI Update successfully");
+            let UIElement = $(`<tr>
+                                        <td>${job.name}</td>
+                                        <td>${job.desc}</td>
+                                        <td><button>trigger</button></td>
+                                        <td><div class="status"></div></td>
+                                    </tr>`);
+            UIElement.appendTo($(".dash-board"))
         }
+    }
+
+    updateUI() {
+        this._updateJobs();
     }
 
     private static instance:View_index;
