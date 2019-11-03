@@ -1,17 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var Stock = /** @class */ (function () {
-    function Stock(name) {
+export class Stock {
+    constructor(name) {
         this._name = name;
     }
-    Object.defineProperty(Stock.prototype, "name", {
-        get: function () {
-            return this._name;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return Stock;
-}());
-exports.Stock = Stock;
+    get name() {
+        return this._name;
+    }
+}
 //# sourceMappingURL=Stock.js.map

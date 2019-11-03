@@ -1,1 +1,1 @@
-{"version":3,"file":"IStockServiceImpl.js","sourceRoot":"","sources":["IStockServiceImpl.ts"],"names":[],"mappings":";;AAGA;IAAA;IAMA,CAAC;IALG,0CAAc,GAAd;QACI,OAAO,CAAC,GAAG,CAAC,YAAY,CAAC,CAAC;QAC1B,OAAO,EAAE,CAAC;IACd,CAAC;IAEL,wBAAC;AAAD,CAAC,AAND,IAMC;AANY,8CAAiB"}
+{"version":3,"file":"IStockServiceImpl.js","sourceRoot":"","sources":["IStockServiceImpl.ts"],"names":[],"mappings":"AAGA,MAAM,OAAO,iBAAiB;IAC1B,cAAc;QACV,OAAO,CAAC,GAAG,CAAC,YAAY,CAAC,CAAC;QAC1B,OAAO,EAAE,CAAC;IACd,CAAC;CAEJ"}

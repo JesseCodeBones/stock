@@ -1,8 +1,39 @@
+html, body{
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.full-screen {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  padding-top: 5rem;
+}
+
+.dash-board {
+  display: inline-block;
+  min-width: 40rem;
+  background: #003257;
+}
+
+.dash-board tbody, .dash-board tr{
+  width: 100%;
+  display: inline-block;
+}
+.dash-board th{
+  width: 10rem;
+  display: inline-block;
+  padding: .3rem .5rem;
+  margin: 0;
+  color: cornsilk;
+  border-left: 1px solid white;
 }

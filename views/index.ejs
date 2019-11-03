@@ -6,8 +6,21 @@
 </head>
 
 <body>
-<h1><%= title %></h1>
-<p>Welcome to h2</p>
+    <div class="full-screen">
+        <table class="dash-board">
+            <tr>
+                <th>名称</th>
+                <th>描述</th>
+                <th>触发</th>
+                <th>结果</th>
+            </tr>
+        </table>
+    </div>
 </body>
+
+<script type="module">
+    import {View_index} from "./javascripts/view_index.js";
+    console.log(View_index.getJobs().length);
+</script>
 
 </html>
