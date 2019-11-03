@@ -9,6 +9,6 @@ router.get('/', function(req, res, next) {
   console.log("hello world");
   let stockService = StockServiceFactory.getInstance(null);
   stockService.fetchStockName();
-  res.render('views/index', { title: "jesse" });
+  res.render('index', { title: "jesse" });
 });
 export default router;
