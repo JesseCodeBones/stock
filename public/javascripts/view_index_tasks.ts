@@ -1,10 +1,17 @@
 
 export class View_index_tasks {
+    get statusCheckUrl(): string {
+        return this._statusCheckUrl;
+    }
+    set statusCheckUrl(value: string) {
+        this._statusCheckUrl = value;
+    }
     name:string;
     desc:string;
     execute_type:number;
     result:string;
     triggerUrl:string;
+    private _statusCheckUrl:string;
 
     constructor(name: string, desc: string, execute_type: number, result: string, triggerUrl:string) {
         this.name = name;
@@ -13,4 +20,5 @@ export class View_index_tasks {
         this.result = result;
         this.triggerUrl = triggerUrl;
     }
+
 }

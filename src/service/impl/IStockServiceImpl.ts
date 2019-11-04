@@ -34,7 +34,7 @@ export class IStockServiceImpl implements IStockService, IStatusable, IStorable{
         let obj = this._getUsefulObj(result, "stockAnalysis");
         let stocks = [];
         // @ts-ignore
-        stocks = jsonfile.readFileSync(__dirname+'/stocks.json');
+        stocks = jsonfile.readFileSync(this.STORE_FILE_PATH);
         obj[0].items.forEach((item)=>{
             stocks.push(item[0]);
         });
@@ -42,6 +42,7 @@ export class IStockServiceImpl implements IStockService, IStatusable, IStorable{
     }
 
     async fetchStockName() {
+        this.status = true;
         jsonfile.writeFileSync(this.STORE_FILE_PATH, []);
         let allStockNumber = await this.getAllStockNumber();
         let maxPage = allStockNumber/80 + 1;
@@ -49,6 +50,8 @@ export class IStockServiceImpl implements IStockService, IStatusable, IStorable{
             let URL = `http://money.finance.sina.com.cn/d/api/openapi_proxy.php/?__s=[[%22hq%22,%22hs_a%22,%22%22,${i},${i+1},80]]&callback=stockAnalysis`;
             await this.fetchStockNameWithPage(URL);
         }
+
+        this.status = false;
     }
 
 

@@ -1,7 +1,10 @@
 import { IStockServiceImpl } from "../impl/IStockServiceImpl";
 export class StockServiceFactory {
     static getInstance(type) {
-        return new IStockServiceImpl();
+        if (this.instance == null) {
+            this.instance = new IStockServiceImpl();
+        }
+        return this.instance;
     }
 }
 //# sourceMappingURL=StockServiceFactory.js.map

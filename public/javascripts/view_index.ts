@@ -3,9 +3,14 @@ import {IViewUpdater} from "./IViewUpdater.js";
 let $: JQueryStatic = (window as any)["jQuery"];
 export class View_index implements IViewUpdater{
     getJobs():View_index_tasks[]{
+        let fetchStockTask = new View_index_tasks("股票名称更新",
+            "股票名称更新",
+            1,
+            "未开始",
+            "/updateStockName");
+        fetchStockTask.statusCheckUrl = "/updateStockName_status";
         return[
-            new View_index_tasks("股票名称更新","股票名称更新",1,"未开始", "/updateStockName"),
-            new View_index_tasks("股票分析","股票分析",1,"未开始", "/")
+            fetchStockTask
         ];
     }
 
@@ -27,6 +32,19 @@ export class View_index implements IViewUpdater{
             UIElement.find("button").on("click", (event)=>{
                 this._triggerJob(job);
             });
+            if (job.statusCheckUrl != null) {
+                setInterval(()=>{
+                    $.get(job.statusCheckUrl, (result)=>{
+                        if (result["status"]){
+                            UIElement.find(".status")
+                                .addClass("running");
+                        } else {
+                            UIElement.find(".status")
+                                .removeClass("running");
+                        }
+                    })
+                }, 2500);
+            }
             UIElement.appendTo($(".dash-board"))
         }
     }

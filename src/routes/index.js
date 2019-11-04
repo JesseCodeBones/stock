@@ -9,8 +9,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: "jesse" });
 });
 router.get('/updateStockName', function (req, res, next) {
-  let stockService = StockServiceFactory.getInstance(null);
-  stockService.fetchStockName();
-  res.json({success:true});
+    let stockService = StockServiceFactory.getInstance(null);
+    stockService.fetchStockName();
+    res.json({success:true});
+});
+router.get('/updateStockName_status', function (req, res, next) {
+    let stockService = StockServiceFactory.getInstance(null);
+    res.json({status:stockService.isRunning()})
 });
 export default router;

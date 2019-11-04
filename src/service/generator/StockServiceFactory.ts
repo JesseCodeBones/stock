@@ -3,7 +3,12 @@ import {IStockServiceImpl} from "../impl/IStockServiceImpl";
 
 export class StockServiceFactory {
 
+    static instance:IStockServiceImpl;
+
     static getInstance(type:string):IStockService{
-        return new IStockServiceImpl();
+        if (this.instance == null) {
+            this.instance = new IStockServiceImpl();
+        }
+        return this.instance;
     }
 }

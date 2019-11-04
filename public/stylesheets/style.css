@@ -41,4 +41,13 @@ table.dash-board td {
   text-align: center;
   border: 1px solid gray;
 }
-
+@keyframes loading
+{
+  from {background: #f70000;}
+  to {background: white;}
+}
+.status.running {
+  animation: loading 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+}
