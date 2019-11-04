@@ -6,9 +6,11 @@ import {IStockServiceImpl} from "../service/impl/IStockServiceImpl";
 import {StockServiceFactory} from "../service/generator/StockServiceFactory";
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log("hello world");
+  res.render('index', { title: "jesse" });
+});
+router.get('/updateStockName', function (req, res, next) {
   let stockService = StockServiceFactory.getInstance(null);
   stockService.fetchStockName();
-  res.render('index', { title: "jesse" });
+  res.json({success:true});
 });
 export default router;

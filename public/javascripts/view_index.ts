@@ -4,13 +4,15 @@ let $: JQueryStatic = (window as any)["jQuery"];
 export class View_index implements IViewUpdater{
     getJobs():View_index_tasks[]{
         return[
-            new View_index_tasks("股票名称更新","股票名称更新",1,"未开始"),
-            new View_index_tasks("股票分析","股票分析",1,"未开始")
+            new View_index_tasks("股票名称更新","股票名称更新",1,"未开始", "/updateStockName"),
+            new View_index_tasks("股票分析","股票分析",1,"未开始", "/")
         ];
     }
 
     _triggerJob(task:View_index_tasks){
-        console.log(task.desc);
+        $.get(task.triggerUrl, (result)=>{
+           window.alert("done");
+        });
     }
 
     _updateJobs(){
