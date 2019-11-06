@@ -3,14 +3,24 @@ import {IViewUpdater} from "./IViewUpdater.js";
 let $: JQueryStatic = (window as any)["jQuery"];
 export class View_index implements IViewUpdater{
     getJobs():View_index_tasks[]{
-        let fetchStockTask = new View_index_tasks("股票名称更新",
-            "股票名称更新",
+        // let fetchStockTask = new View_index_tasks("股票名称更新",
+        //     "股票名称更新",
+        //     1,
+        //     "未开始",
+        //     "/updateStockName");
+        // fetchStockTask.statusCheckUrl = "/updateStockName_status";
+
+
+        let duotoupailie = new View_index_tasks("多头排列",
+            "多头排列",
             1,
             "未开始",
-            "/updateStockName");
-        fetchStockTask.statusCheckUrl = "/updateStockName_status";
+            "/duotou_fetch");
+        duotoupailie.statusCheckUrl = "/duotou_fetch_status";
+        duotoupailie.reportUrl = "/duotou_fetch_report";
+
         return[
-            fetchStockTask
+            duotoupailie
         ];
     }
 

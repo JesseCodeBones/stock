@@ -1,5 +1,11 @@
 
 export class View_index_tasks {
+    set reportUrl(value: string) {
+        this._reportUrl = value;
+    }
+    get reportUrl(): string {
+        return this._reportUrl;
+    }
     get statusCheckUrl(): string {
         return this._statusCheckUrl;
     }
@@ -12,6 +18,7 @@ export class View_index_tasks {
     result:string;
     triggerUrl:string;
     private _statusCheckUrl:string;
+    private _reportUrl:string;
 
     constructor(name: string, desc: string, execute_type: number, result: string, triggerUrl:string) {
         this.name = name;

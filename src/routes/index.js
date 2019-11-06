@@ -17,4 +17,11 @@ router.get('/updateStockName_status', function (req, res, next) {
     let stockService = StockServiceFactory.getInstance(null);
     res.json({status:stockService.isRunning()})
 });
+
+router.get('/duotou_fetch', function (req, res, next) {
+
+});
+router.get('/duotou_fetch_status', function (req, res, next) {
+    res.json({status:true});
+});
 export default router;

@@ -6,6 +6,7 @@
     "start": "node ./bin/www",
     "server": "babel-node ./src/bin/www",
     "dev": "nodemon --exec NODE_ENV=development npm-run-all server",
+    "window-dev": "nodemon --exec  D:\\workspace\\stock\\node_modules\\.bin\\babel-node.cmd  ./src/bin/www",
     "ts-build": "tsc -p ."
   },
   "dependencies": {
