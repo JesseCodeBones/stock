@@ -2,3 +2,4 @@
 node_modules
 /public/javascripts/*.js
 /public/javascripts/*.js.map
+.idea/encodings.xml

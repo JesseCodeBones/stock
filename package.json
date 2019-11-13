@@ -18,7 +18,8 @@
     "ejs": "latest",
     "iconv-lite": "^0.4.24",
     "bufferhelper": "^0.2.1",
-    "jsonfile": "latest"
+    "jsonfile": "latest",
+    "task-chain": "~1.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.4",
