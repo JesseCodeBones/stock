@@ -2,4 +2,8 @@
 node_modules
 /public/javascripts/*.js
 /public/javascripts/*.js.map
+/src/beans/*.js
+/src/beans/*.js.map
+/src/service/*.js
+/src/service/*.js.map
 .idea/encodings.xml

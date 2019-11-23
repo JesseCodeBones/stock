@@ -1,6 +1,6 @@
 
 // @ts-ignore
-let ChainTaskRunner = require('./ChainTaskRunner');
+let ChainTaskRunner = require('task-chain').ChainTaskRunner;
 
 export class PatchRunnerHelper {
 
