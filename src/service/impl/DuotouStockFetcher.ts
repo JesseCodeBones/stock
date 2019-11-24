@@ -21,7 +21,28 @@ export class DuotouStockFetcher implements IStockFetcher{
     }
 
     fit(stockName: Stock, marketData: MarketData): boolean {
-        console.log(stockName.name);
+
+        if (marketData['mashData'][0]['ma13'] >= marketData['mashData'][0]['ma34']) {
+            if (marketData['mashData'][0]['ma34'] >= marketData['mashData'][0]['ma55']) {
+                if (marketData['mashData'][0]['ma55'] >= marketData['mashData'][0]['ma144']) {
+
+                    console.log(`${marketData['mashData'][0]['ma13']} - ${marketData['mashData'][0]['ma34']} - ${marketData['mashData'][0]['ma55']} - ${marketData['mashData'][0]['ma144']}`);
+
+                    return true;
+                }
+            }
+        }
+
+        // if (marketData['mashData'][0]['ma13'] >= marketData['mashData'][4]['ma13'] ) {//13天线趋于平稳
+        //     if (marketData['mashData'][0]['ma13'] > marketData['mashData'][0]['close']) {
+        //         let cha = marketData['mashData'][0]['ma13'] - marketData['mashData'][0]['close'];
+        //         if (cha / marketData['mashData'][0]['close'] > 0.03) {
+        //             console.log(`found the stock${stockName.name}`);
+        //             return true;
+        //         }
+        //     }
+        // }
+
         return false;
     }
 
