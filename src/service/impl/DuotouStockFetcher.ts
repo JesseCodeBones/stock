@@ -22,26 +22,39 @@ export class DuotouStockFetcher implements IStockFetcher{
 
     fit(stockName: Stock, marketData: MarketData): boolean {
 
-        if (marketData['mashData'][0]['ma13'] >= marketData['mashData'][0]['ma34']) {
-            if (marketData['mashData'][0]['ma34'] >= marketData['mashData'][0]['ma55']) {
-                if (marketData['mashData'][0]['ma55'] >= marketData['mashData'][0]['ma144']) {
-
-                    console.log(`${marketData['mashData'][0]['ma13']} - ${marketData['mashData'][0]['ma34']} - ${marketData['mashData'][0]['ma55']} - ${marketData['mashData'][0]['ma144']}`);
-
-                    return true;
-                }
+        //5天内存在一天13天线是向上的
+        let firstCondition:boolean = false;
+        for (let i of [0, 1, 2, 3, 4]){
+            if (marketData['mashData'][i]['ma13'] >= marketData['mashData'][i+1]['ma13']) {
+                console.log('********************* got one ***********'+stockName.name);
+                firstCondition = true;
             }
         }
 
-        // if (marketData['mashData'][0]['ma13'] >= marketData['mashData'][4]['ma13'] ) {//13天线趋于平稳
-        //     if (marketData['mashData'][0]['ma13'] > marketData['mashData'][0]['close']) {
-        //         let cha = marketData['mashData'][0]['ma13'] - marketData['mashData'][0]['close'];
-        //         if (cha / marketData['mashData'][0]['close'] > 0.03) {
-        //             console.log(`found the stock${stockName.name}`);
-        //             return true;
-        //         }
-        //     }
-        // }
+        //当前股价小于13天均线
+        let secondCondition:boolean = false;
+        console.log('close:'+marketData['mashData'][0]['kline']['close']);
+        if (marketData['mashData'][0]['kline']['close'] < marketData['mashData'][0]['ma13']) {
+            console.log('********************* got two ***********'+stockName.name);
+            secondCondition = true;
+        }
+
+        //股价严重偏离144趋势线
+        let thirdCondition: boolean = false;
+
+        if (marketData['mashData'][0]['ma13'] < marketData['mashData'][0]['ma144']) {
+
+            let cha:number = marketData['mashData'][0]['ma144'] - marketData['mashData'][0]['ma13'];
+            cha = cha / marketData['mashData'][0]['ma13'];
+            if (cha > 0.15) {
+                console.log('********************* got three ***********'+stockName.name);
+                thirdCondition = true;
+            }
+        }
+
+        if (firstCondition && secondCondition && thirdCondition) {
+            return true;
+        }
 
         return false;
     }
