@@ -7,6 +7,7 @@ import {StockServiceFactory} from "../service/generator/StockServiceFactory";
 import {FetchServiceFactory} from "../service/generator/FetchServiceFactory";
 import {DuotouStockFetcher} from "../service/impl/DuotouStockFetcher";
 import {PatchRunnerHelper} from "../service/util/PatchRunnerHelper";
+import {GeneralFetchService} from "../service/impl/GeneralFetchService";
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('dashboard', { title: "jesse" });
@@ -33,8 +34,7 @@ router.get('/duotou_fetch', function (req, res, next) {
     fetchService.fetch();
 });
 router.get('/duotou_fetch_status', function (req, res, next) {
-    let runner = PatchRunnerHelper.getTaskChainRunner();
-    res.json({status:runner.taskQueue.length>0});
+    res.json({status:GeneralFetchService.status});
 });
 
 router.get('/reverse_report', function (req, res, next) {
