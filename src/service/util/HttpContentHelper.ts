@@ -25,6 +25,20 @@ export class HttpContentHelper {
         })
     }
 
+    static downloadHttps(url, callback) {
+        https.get(url, function(res) {
+            var data = "";
+            res.on('data', function (chunk) {
+                data += chunk;
+            });
+            res.on("end", function() {
+                callback(data);
+            });
+        }).on("error", function(error) {
+            callback(null, error);
+        });
+    }
+
     static async getHttpsRequest(url:string):Promise<string> {
         return new Promise<string>((resolve, reject) => {
             https.get(url, function(res) {
@@ -36,6 +50,7 @@ export class HttpContentHelper {
                     resolve(data);
                 });
             }).on("error", function(error) {
+                console.log(error);
                 reject(error);
             });
         });

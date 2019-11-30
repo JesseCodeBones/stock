@@ -1,0 +1,42 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+body {
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.tables {
+    position: relative;
+    padding: 1rem;
+}
+
+.report {
+    position: relative;
+    width: 25rem;
+    background: burlywood;
+}
+
+.title {
+    background: darkred;
+    color: white;
+}
+
+.body {
+    overflow-y: auto;
+    height: 15rem;
+    color: white;
+    text-align: center;
+    background: cadetblue;
+}
+
+.row {
+    border-bottom: 1px solid lightblue;
+    padding: 0.5rem;
+}
+
+.row:focus-within {
+    border: thin solid black;
+}

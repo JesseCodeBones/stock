@@ -11,8 +11,8 @@ export class View_index implements IViewUpdater{
         // fetchStockTask.statusCheckUrl = "/updateStockName_status";
 
 
-        let duotoupailie = new View_index_tasks("多头排列",
-            "多头排列",
+        let duotoupailie = new View_index_tasks("抓反弹",
+            "13天线出现拐头，但是股价有打回13天以下",
             1,
             "未开始",
             "/duotou_fetch");
@@ -48,9 +48,13 @@ export class View_index implements IViewUpdater{
                         if (result["status"]){
                             UIElement.find(".status")
                                 .addClass("running");
+                            // @ts-ignore
+                            UIElement.find("button").attr("disabled", true);
                         } else {
                             UIElement.find(".status")
                                 .removeClass("running");
+                            // @ts-ignore
+                            UIElement.find("button").attr("disabled", false);
                         }
                     })
                 }, 2500);
