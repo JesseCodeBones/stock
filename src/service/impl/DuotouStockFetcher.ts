@@ -30,6 +30,7 @@ export class DuotouStockFetcher implements IStockFetcher{
         let firstCondition:boolean = false;
         for (let i of [0, 1, 2, 3, 4, 5, 6]){
             if (marketData['mashData'][i]['ma13'] >= marketData['mashData'][i+1]['ma13']) {
+                console.log('condition1');
                 firstCondition = true;
             }
         }
@@ -38,6 +39,7 @@ export class DuotouStockFetcher implements IStockFetcher{
         let secondCondition:boolean = false;
         console.log('close:'+marketData['mashData'][0]['kline']['close']);
         if (marketData['mashData'][0]['kline']['close'] < marketData['mashData'][0]['ma13']) {
+            console.log('condition2');
             secondCondition = true;
         }
 
@@ -49,6 +51,7 @@ export class DuotouStockFetcher implements IStockFetcher{
             let cha:number = marketData['mashData'][0]['ma144'] - marketData['mashData'][0]['ma13'];
             cha = cha / marketData['mashData'][0]['ma13'];
             if (cha > 0.15) {
+                console.log('condition3');
                 thirdCondition = true;
             }
         }

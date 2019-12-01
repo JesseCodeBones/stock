@@ -30,8 +30,10 @@ router.get('/updateStockName_status', function (req, res, next) {
 router.get('/duotou_fetch', function (req, res, next) {
     let fetchService = FetchServiceFactory.getFetchService(null);
     let duotouFetcher = DuotouStockFetcher.generateInstance();
-    fetchService.addFetcher(duotouFetcher);
-    fetchService.fetch();
+    if (!GeneralFetchService.status) {
+        fetchService.addFetcher(duotouFetcher);
+        fetchService.fetch();
+    }
 });
 router.get('/duotou_fetch_status', function (req, res, next) {
     res.json({status:GeneralFetchService.status});

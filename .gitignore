@@ -7,3 +7,5 @@ src/service/**/*.js
 src/service/**/*.js.map
 src/beans/**/*.js
 src/beans/**/*.js.map
+src/test/**/*.js
+src/test/**/*.js.map
