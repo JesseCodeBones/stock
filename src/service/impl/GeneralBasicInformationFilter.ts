@@ -9,7 +9,7 @@ export class GeneralBasicInformationFilter implements IBasicInformationFilter{
             let body:string = await HttpContentHelper.getHttpRequest(url);
             let jsonData = JSON.parse(body);
             let latestCash = Number(jsonData[0]['mgjyxjl']);
-            if (latestCash / price >= 0.025) {
+            if (latestCash / price >= 0.03) {
                 console.log(`stock${stock.name} with cache:${latestCash} - now price:${price}` );
                 return new Promise(function (resolve, reject) {
                    resolve(true);
