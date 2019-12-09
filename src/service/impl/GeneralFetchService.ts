@@ -36,12 +36,17 @@ export class GeneralFetchService implements IFetchService{
         let that = this;
         let basicInformationFilter:IBasicInformationFilter = new GeneralBasicInformationFilter();
         stocks.forEach(async (stock, index) => {
-            let fetchUrl: string = `https://gupiao.baidu.com/api/stocks/stockdaybar?from=pc&os_ver=1&cuid=xxx&vv=100&format=json&stock_code=${stock}&step=3&start=&count=160&fq_type=front&timestamp=${nowValue}`;
+            let fetchingUrl:string = `http://flashdata2.jrj.com.cn/history/js/share/${stock.substring(2)}/other/dayk_ex.js?random=${nowValue}`;
             let task = new ChainTask(function(){
-                HttpContentHelper.getHttpsRequest(fetchUrl).then((body)=>{
-                    let bodyObj:object = JSON.parse(body);
-                    bodyObj = CalculateHelper.generateFibonacci(bodyObj);
-                    let price:number = bodyObj['mashData'][0]['kline']['close'];
+                HttpContentHelper.getHttpRequest(fetchingUrl).then((body)=>{
+
+                    let jsonString:string = body.split("=")[1];
+                    jsonString = jsonString.split('"factor"')[0].split('"hqs":')[1];
+                    let jsonArr:Array<Array<any>> = JSON.parse(jsonString.substr(0, jsonString.length-3));
+
+                    jsonArr = CalculateHelper.generateFibonacciNew(jsonArr);
+
+                    let price:number = jsonArr[0][2];
                     let stockObj = new Stock(stock);
                     if (index == stocks.length - 1) {
                         GeneralFetchService.status = false;
@@ -50,7 +55,7 @@ export class GeneralFetchService implements IFetchService{
                         if (isGood) {
                             if (that.fetchers.size > 0) {
                                 for (let fetcher of that.fetchers) {
-                                    let isFit = fetcher.fit(stockObj, bodyObj);
+                                    let isFit = fetcher.fit(stockObj, jsonArr);
                                     if (isFit){
                                         fetcher.store(stockObj)
                                     }

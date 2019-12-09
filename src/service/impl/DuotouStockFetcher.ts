@@ -24,12 +24,12 @@ export class DuotouStockFetcher implements IStockFetcher{
         DuotouStockFetcher.fetchDate = `${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`;
     }
 
-    fit(stockName: Stock, marketData: MarketData): boolean {
+    fit(stockName: Stock, marketData: Array<Array<any>>): boolean {
 
         //7天内存在一天13天线是向上的
         let firstCondition:boolean = false;
         for (let i of [0, 1, 2, 3, 4, 5, 6]){
-            if (marketData['mashData'][i]['ma13'] >= marketData['mashData'][i+1]['ma13']) {
+            if (marketData[i][9] >= marketData[i+1][9]) {
                 console.log('condition1');
                 firstCondition = true;
             }
@@ -37,8 +37,8 @@ export class DuotouStockFetcher implements IStockFetcher{
 
         //当前股价小于13天均线
         let secondCondition:boolean = false;
-        console.log('close:'+marketData['mashData'][0]['kline']['close']);
-        if (marketData['mashData'][0]['kline']['close'] < marketData['mashData'][0]['ma13']) {
+        console.log('close:'+marketData[0][2]);
+        if (marketData[0][2] < marketData[0][9]) {
             console.log('condition2');
             secondCondition = true;
         }
@@ -46,10 +46,10 @@ export class DuotouStockFetcher implements IStockFetcher{
         //股价严重偏离144趋势线
         let thirdCondition: boolean = false;
 
-        if (marketData['mashData'][0]['ma13'] < marketData['mashData'][0]['ma144']) {
+        if (marketData[0][9] < marketData[0][12]) {
 
-            let cha:number = marketData['mashData'][0]['ma144'] - marketData['mashData'][0]['ma13'];
-            cha = cha / marketData['mashData'][0]['ma13'];
+            let cha:number = marketData[0][12] - marketData[0][9];
+            cha = cha / marketData[0][9];
             if (cha > 0.15) {
                 console.log('condition3');
                 thirdCondition = true;
