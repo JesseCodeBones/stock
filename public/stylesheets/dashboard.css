@@ -16,6 +16,8 @@ body {
 .report {
     position: relative;
     width: 25rem;
+    display: inline-block;
+    margin: 0rem 1rem;
     background: burlywood;
 }
 

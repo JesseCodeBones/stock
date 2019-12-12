@@ -8,6 +8,7 @@ import {FetchServiceFactory} from "../service/generator/FetchServiceFactory";
 import {DuotouStockFetcher} from "../service/impl/DuotouStockFetcher";
 import {PatchRunnerHelper} from "../service/util/PatchRunnerHelper";
 import {GeneralFetchService} from "../service/impl/GeneralFetchService";
+import {LowBollGeneralFetcher} from "../service/impl/LowBollGeneralFetcher";
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('dashboard', { title: "jesse" });
@@ -29,9 +30,11 @@ router.get('/updateStockName_status', function (req, res, next) {
 
 router.get('/duotou_fetch', function (req, res, next) {
     let fetchService = FetchServiceFactory.getFetchService(null);
+    let lowBollGeneralFetcher = LowBollGeneralFetcher.generateInstance();
     let duotouFetcher = DuotouStockFetcher.generateInstance();
     if (!GeneralFetchService.status) {
         fetchService.addFetcher(duotouFetcher);
+        fetchService.addFetcher(lowBollGeneralFetcher);
         fetchService.fetch();
     }
 });
@@ -43,5 +46,10 @@ router.get('/reverse_report', function (req, res, next) {
     let duotouFetcher = DuotouStockFetcher.generateInstance();
     res.json(duotouFetcher.report());
 });
+
+router.get('/low_boll_report', function (req, res, next) {
+    res.json(LowBollGeneralFetcher.generateInstance().report());
+});
+
 
 export default router;

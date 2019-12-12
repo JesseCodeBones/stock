@@ -40,6 +40,25 @@ export class CalculateHelper {
 
         return data;
     }
+    
+    static calculateBOLLForLatest(data:Array<any>):Array<any>{
+        if (data.length < 14) {
+            return data;
+        } else {
+            let average:number = data[0][9];
+            let standardDeviation = 0;
+            for (let i = 0; i <=12; i++) {
+                standardDeviation += Math.pow(data[i][2] - average, 2);
+            }
+            standardDeviation = standardDeviation / 12;
+            standardDeviation = Math.sqrt(standardDeviation);
+            let up:number = data[1][2] + 2*standardDeviation;
+            let down:number = data[1][2] - 2*standardDeviation;
+            data[0][13] = up;
+            data[0][14] = down;
+            return data;
+        }
+    }
 
 
     static generateFibonacci(data:object):object{

@@ -45,7 +45,7 @@ export class GeneralFetchService implements IFetchService{
                     let jsonArr:Array<Array<any>> = JSON.parse(jsonString.substr(0, jsonString.length-3));
 
                     jsonArr = CalculateHelper.generateFibonacciNew(jsonArr);
-
+                    jsonArr = CalculateHelper.calculateBOLLForLatest(jsonArr);
                     let price:number = jsonArr[0][2];
                     let stockObj = new Stock(stock);
                     if (index == stocks.length - 1) {

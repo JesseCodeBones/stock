@@ -9,7 +9,7 @@ export class LowBollGeneralFetcher implements IStockFetcher{
     private static instance:LowBollGeneralFetcher;
 
     // @ts-ignore
-    private static PATH:string = __dirname + "/../../../db/fetchers/duotou.json";
+    private static PATH:string = __dirname + "/../../../db/fetchers/low_boll.json";
     private static fetchDate: string;
 
     static generateInstance():LowBollGeneralFetcher{
@@ -27,6 +27,9 @@ export class LowBollGeneralFetcher implements IStockFetcher{
 
     fit(stockName: Stock, marketData: MarketData): boolean {
 
+        if (marketData[0][2] < marketData[0][14]) {
+            return true;
+        }
 
         return false;
     }
