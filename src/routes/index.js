@@ -51,5 +51,16 @@ router.get('/low_boll_report', function (req, res, next) {
     res.json(LowBollGeneralFetcher.generateInstance().report());
 });
 
+router.get('/stock',function (req, res, next) {
+    res.render("stocks_index");
+});
+
+router.get('/tabs',function (req, res, next) {
+    res.render("tabs");
+});
+router.get('/blog',function (req, res, next) {
+    res.render("blog");
+});
+
 
 export default router;

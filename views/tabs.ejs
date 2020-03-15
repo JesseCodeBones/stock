@@ -1,0 +1,13 @@
+<div class="tab_bar">
+    <div class="user_name"></div>
+    <div class="user_icon"></div>
+    <div class="tabs">
+        <div class="tab" url="/blog">技术博客</div>
+        <div class="tab" url="/stock">股票系统</div>
+    </div>
+</div>
+<script src="./lib/jQuery.js" defer></script>
+<script type="module" defer>
+    import {view_dashboard} from "./javascripts/view_dashboard.js";
+    view_dashboard.registerEvent();
+</script>

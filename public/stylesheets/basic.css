@@ -1,0 +1,67 @@
+.tab_bar {
+    background: #9c27b07a;
+    color: white;
+}
+
+.tab {
+    display: inline-block;
+    cursor: pointer;
+    padding: .5rem 1rem;
+}
+
+body {
+    background: url("/images/background.jpg") no-repeat fixed center;
+    background-size: cover;
+    position: relative;
+}
+
+.tab:hover {
+    background: black;
+}
+
+.user_name {
+    min-width: 2rem;
+    display: inline-block;
+    height: 100%;
+}
+
+.user_icon {
+    display: inline-block;
+}
+
+.tabs {
+    display: inline;
+}
+
+.button-common {
+    background: #ff5722d9;
+    display: inline-block;
+    padding: 0.5rem 2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+/***
+Animation Part
+ */
+
+
+@keyframes bottom_display_animation
+{
+    from {bottom: -10rem;}
+    to {bottom: 0;}
+}
+
+@keyframes trans_display_animation
+{
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
