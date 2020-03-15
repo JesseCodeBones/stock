@@ -18,8 +18,14 @@
 </div>
 
 <div class="controller">
-    <div class="button-common">
+    <div class="button-common" url="/trigger">
         触发器
+    </div>
+    <div class="button-common" url="/fetchGood">
+        优质股触发器
+    </div>
+    <div class="button-common" url="/updateStockName">
+        股票名字触发器
     </div>
 </div>
 </body>
@@ -28,6 +34,6 @@
 
     import {stock_index} from "./javascripts/stock_index.js";
     stock_index.generateTables();
-
+    stock_index.bindAction();
 </script>
 </html>

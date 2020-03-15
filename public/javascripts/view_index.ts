@@ -11,13 +11,14 @@ export class View_index implements IViewUpdater{
         // fetchStockTask.statusCheckUrl = "/updateStockName_status";
 
 
-        let duotoupailie = new View_index_tasks("抓反弹",
-            "13天线出现拐头，但是股价有打回13天以下",
+        let duotoupailie = new View_index_tasks("总触发",
+            `  1, 13天线出现拐头，但是股价有打回13天以下<br>
+                    2, 股价出现在BOLL下方  `,
             1,
             "未开始",
-            "/duotou_fetch");
-        duotoupailie.statusCheckUrl = "/duotou_fetch_status";
-        duotoupailie.reportUrl = "/duotou_fetch_report";
+            "/fetch");
+        duotoupailie.statusCheckUrl = "/fetch_status";
+        duotoupailie.reportUrl = "/fetch_report";
 
         return[
             duotoupailie
@@ -35,7 +36,7 @@ export class View_index implements IViewUpdater{
         for (let job of jobs){
             let UIElement = $(`<tr>
                                         <td>${job.name}</td>
-                                        <td>${job.desc}</td>
+                                        <td style="text-align: left">${job.desc}</td>
                                         <td><button>trigger</button></td>
                                         <td><div class="status"></div></td>
                                     </tr>`);

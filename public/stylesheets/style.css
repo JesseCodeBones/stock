@@ -30,11 +30,12 @@ a {
 table.dash-board {
   display: inline-block;
   border: 1px solid gray;
+  background: white;
 }
 
 table.dash-board th {
   border: 1px solid green;
-  min-width: 15rem;
+  min-width: 10rem;
 }
 
 table.dash-board td {

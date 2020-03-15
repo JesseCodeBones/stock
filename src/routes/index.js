@@ -9,6 +9,7 @@ import {DuotouStockFetcher} from "../service/impl/DuotouStockFetcher";
 import {PatchRunnerHelper} from "../service/util/PatchRunnerHelper";
 import {GeneralFetchService} from "../service/impl/GeneralFetchService";
 import {LowBollGeneralFetcher} from "../service/impl/LowBollGeneralFetcher";
+import {GeneralFetchGood} from "../service/impl/GeneralFetchGood";
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('dashboard', { title: "jesse" });
@@ -28,7 +29,7 @@ router.get('/updateStockName_status', function (req, res, next) {
     res.json({status:stockService.isRunning()})
 });
 
-router.get('/duotou_fetch', function (req, res, next) {
+router.get('/fetch', function (req, res, next) {
     let fetchService = FetchServiceFactory.getFetchService(null);
     let lowBollGeneralFetcher = LowBollGeneralFetcher.generateInstance();
     let duotouFetcher = DuotouStockFetcher.generateInstance();
@@ -38,7 +39,7 @@ router.get('/duotou_fetch', function (req, res, next) {
         fetchService.fetch();
     }
 });
-router.get('/duotou_fetch_status', function (req, res, next) {
+router.get('/fetch_status', function (req, res, next) {
     res.json({status:GeneralFetchService.status});
 });
 
@@ -60,6 +61,12 @@ router.get('/tabs',function (req, res, next) {
 });
 router.get('/blog',function (req, res, next) {
     res.render("blog");
+});
+
+router.get('/fetchGood',function (req, res, next) {
+    let fetchGood = new GeneralFetchGood();
+    fetchGood.fetch();
+    res.json({status:'fetching'});
 });
 
 

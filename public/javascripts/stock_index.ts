@@ -23,4 +23,16 @@ export class stock_index {
             });
         }
     }
+
+
+    static bindAction(){
+        //trigger action
+        $(".controller .button-common").each(function (index) {
+            $(this).on('click', function () {
+                if (confirm('触发这个触发器吗？')) {
+                    window.location.href = $(this).attr('url');
+                }
+            });
+        });
+    }
 }

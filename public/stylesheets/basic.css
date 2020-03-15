@@ -22,7 +22,6 @@ body {
 .user_name {
     min-width: 2rem;
     display: inline-block;
-    height: 100%;
 }
 
 .user_icon {
