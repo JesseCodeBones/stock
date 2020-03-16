@@ -13,7 +13,7 @@ const ChainTask = require('task-chain').ChainTask;
 export class GeneralFetchService implements IFetchService{
     private fetchers = new Set<IStockFetcher>();
     // @ts-ignore
-    private _STOCKS_DB_ADDR:string = __dirname + "/../../../db/stocks.json";
+    private _STOCKS_DB_ADDR:string = __dirname + "/../../../db/good.json";
     static status:boolean = false;
     addFetcher(fetcher: IStockFetcher) {
         this.fetchers.add(fetcher);

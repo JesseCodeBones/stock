@@ -1,7 +1,7 @@
 // @ts-ignore
 let $: JQueryStatic = (window as any)["jQuery"];
 export class stock_index {
-    static reports:string[] = ['reverse_report', "low_boll_report"];
+    static reports:string[] = ['reverse_report', "low_boll_report", "cross_report"];
     static generateTables(){
         for (let reportUrl of this.reports) {
             $.get(reportUrl, function (data) {

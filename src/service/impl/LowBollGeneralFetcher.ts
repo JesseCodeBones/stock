@@ -36,7 +36,7 @@ export class LowBollGeneralFetcher implements IStockFetcher{
 
     report(): FetcherReport {
         let report = new FetcherReport();
-        report.title="股价出现在BOLL线下轨一下";
+        report.title="股价出现在BOLL线下轨以下";
         let existedStocks:Stock[] = jsonfile.readFileSync(LowBollGeneralFetcher.PATH);
         report.result = existedStocks;
         if (!LowBollGeneralFetcher.fetchDate) {

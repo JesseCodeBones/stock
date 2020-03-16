@@ -15,7 +15,7 @@ export class GeneralFetchGood implements IFetchGood{
     fetch() {
 
         let stocks:string[] = jsonfile.readFileSync(GeneralFetchGood.STOCKS_DB);
-
+        jsonfile.writeFileSync(GeneralFetchGood.GOOD_DB, []);
         stocks.forEach(stock=>{
 
             let task = new ChainTask(function(){
@@ -31,9 +31,11 @@ export class GeneralFetchGood implements IFetchGood{
                         if (Number(current['mgjyxjl']) > 0) {
                             if (Number(current['zcfzl']) < 60) {
                                 if (Number(current['mgjyxjl']) / Number(previous['mgjyxjl']) > 1.1) {
-                                    stocks = jsonfile.readFileSync(GeneralFetchGood.GOOD_DB);
-                                    stocks.push(stock);
-                                    jsonfile.writeFileSync(GeneralFetchGood.GOOD_DB, stocks);
+                                    if (Number(current['jbmgsy']) / Number(previous['mgjzc']) > 0.06) {
+                                        stocks = jsonfile.readFileSync(GeneralFetchGood.GOOD_DB);
+                                        stocks.push(stock);
+                                        jsonfile.writeFileSync(GeneralFetchGood.GOOD_DB, stocks);
+                                    }
                                 }
                             }
                         }

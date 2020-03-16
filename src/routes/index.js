@@ -10,6 +10,7 @@ import {PatchRunnerHelper} from "../service/util/PatchRunnerHelper";
 import {GeneralFetchService} from "../service/impl/GeneralFetchService";
 import {LowBollGeneralFetcher} from "../service/impl/LowBollGeneralFetcher";
 import {GeneralFetchGood} from "../service/impl/GeneralFetchGood";
+import {Cross13StockFetcher} from "../service/impl/Cross13StockFetcher";
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('dashboard', { title: "jesse" });
@@ -33,9 +34,11 @@ router.get('/fetch', function (req, res, next) {
     let fetchService = FetchServiceFactory.getFetchService(null);
     let lowBollGeneralFetcher = LowBollGeneralFetcher.generateInstance();
     let duotouFetcher = DuotouStockFetcher.generateInstance();
+    let crossFetcher = Cross13StockFetcher.generateInstance();
     if (!GeneralFetchService.status) {
         fetchService.addFetcher(duotouFetcher);
         fetchService.addFetcher(lowBollGeneralFetcher);
+        fetchService.addFetcher(crossFetcher);
         fetchService.fetch();
     }
 });
@@ -50,6 +53,10 @@ router.get('/reverse_report', function (req, res, next) {
 
 router.get('/low_boll_report', function (req, res, next) {
     res.json(LowBollGeneralFetcher.generateInstance().report());
+});
+
+router.get('/cross_report', function (req, res, next) {
+    res.json(Cross13StockFetcher.generateInstance().report());
 });
 
 router.get('/stock',function (req, res, next) {
